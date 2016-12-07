@@ -1,4 +1,4 @@
-#!/usr/bin/env /home/xinleic/anaconda/bin/python
+#!/usr/bin/env python
 # Copyright 2015 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,12 +46,12 @@ import sys
 import pipes
 
 # Template values set by cuda_autoconf.
-CPU_COMPILER = ('/home/xinleic/tools/gcc/bin/gcc')
-GCC_HOST_COMPILER_PATH = ('/home/xinleic/tools/gcc/bin/gcc')
+CPU_COMPILER = ('%{cpu_compiler}')
+GCC_HOST_COMPILER_PATH = ('%{gcc_host_compiler_path}')
 
 CURRENT_DIR = os.path.dirname(sys.argv[0])
 NVCC_PATH = CURRENT_DIR + '/../../../cuda/bin/nvcc'
-LLVM_HOST_COMPILER_PATH = ('/home/xinleic/tools/gcc/bin/gcc')
+LLVM_HOST_COMPILER_PATH = ('/usr/bin/gcc')
 PREFIX_DIR = os.path.dirname(GCC_HOST_COMPILER_PATH)
 
 def Log(s):

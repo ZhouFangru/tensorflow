@@ -44,7 +44,7 @@ toolchain {
 
   tool_path { name: "ar" path: "/usr/bin/ar" }
   tool_path { name: "compat-ld" path: "/usr/bin/ld" }
-  tool_path { name: "cpp" path: "/home/xinleic/tools/gcc/bin/cpp" }
+  tool_path { name: "cpp" path: "/usr/bin/cpp" }
   tool_path { name: "dwp" path: "/usr/bin/dwp" }
   # As part of the TensorFlow release, we place some cuda-related compilation
   # files in @local_config_cuda//crosstool/clang/bin, and this relative
@@ -54,8 +54,9 @@ toolchain {
   # Use "-std=c++11" for nvcc. For consistency, force both the host compiler
   # and the device compiler to use "-std=c++11".
   cxx_flag: "-std=c++11"
+  cxx_flag: "-D_MWAITXINTRIN_H_INCLUDED"
+  cxx_flag: "-D__STRICT_ANSI__"
   linker_flag: "-lstdc++"
-  linker_flag: "-Wl,-R/home/xinleic/tools/gcc/lib64"
   linker_flag: "-B/usr/bin/"
 
 %{gcc_host_compiler_includes}
@@ -120,9 +121,6 @@ toolchain {
   # linker_flag: "-Wl,--warn-execstack"
   # linker_flag: "-Wl,--detect-odr-violations"
 
-  cxx_builtin_include_directory: "/home/xinleic/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.9.3/include"
-  cxx_builtin_include_directory: "/home/xinleic/tools/gcc/lib/gcc/x86_64-unknown-linux-gnu/4.9.3/include-fixed"
-  cxx_builtin_include_directory: "/home/xinleic/tools/gcc/include/c++/4.9.3"
   # Include directory for cuda headers.
   cxx_builtin_include_directory: "%{cuda_include_path}"
 

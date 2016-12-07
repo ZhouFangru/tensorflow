@@ -67,6 +67,11 @@ resized_image = tf.image.resize_images(image, [299, 299])
 @@resize_bilinear
 @@resize_nearest_neighbor
 
+@@resample
+
+@@roi_pooling
+@@roi_unpooling
+
 ## Cropping
 
 @@resize_image_with_crop_or_pad
@@ -127,6 +132,9 @@ hsv_image = tf.image.rgb_to_hsv(rgb_image)
 
 @@hsv_to_rgb
 @@rgb_to_hsv
+
+@@optical_flow_to_hsv
+@@optical_flow_to_rgb
 
 @@convert_image_dtype
 

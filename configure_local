@@ -183,7 +183,7 @@ while true; do
 
   fromuser=""
   if [ -z "$CUDA_TOOLKIT_PATH" ]; then
-    default_cuda_path=/usr/local/cuda-8.0
+    default_cuda_path=/usr/local/cuda
     if is_windows; then
       if [ -z "$CUDA_PATH" ]; then
         default_cuda_path="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0"
@@ -236,7 +236,7 @@ while true; do
 
   fromuser=""
   if [ -z "$CUDNN_INSTALL_PATH" ]; then
-    default_cudnn_path=/home/xinleic/tools/cudnn-v5.1-2
+    default_cudnn_path=/home/xinleic/tools/cudnn-v5.1
     read -p "Please specify the location where cuDNN $TF_CUDNN_VERSION library is installed. Refer to README.md for more details. [Default is $default_cudnn_path]: " CUDNN_INSTALL_PATH
     fromuser="1"
     if [ -z "$CUDNN_INSTALL_PATH" ]; then
@@ -331,14 +331,14 @@ done
 # Since Cuda toolkit is not backward-compatible, this is not guaranteed to work.
 while true; do
   fromuser=""
-  default_cuda_compute_capabilities="3.5,5.2,6.1"
+  default_cuda_compute_capabilities="5.0"
   if [ -z "$TF_CUDA_COMPUTE_CAPABILITIES" ]; then
 cat << EOF
 Please specify a list of comma-separated Cuda compute capabilities you want to build with.
 You can find the compute capability of your device at: https://developer.nvidia.com/cuda-gpus.
 Please note that each additional compute capability significantly increases your build time and binary size.
 EOF
-    read -p "[Default is: \"3.5,5.2,6.1\"]: " TF_CUDA_COMPUTE_CAPABILITIES
+    read -p "[Default is: \"5.0\"]: " TF_CUDA_COMPUTE_CAPABILITIES
     fromuser=1
   fi
   if [ -z "$TF_CUDA_COMPUTE_CAPABILITIES" ]; then

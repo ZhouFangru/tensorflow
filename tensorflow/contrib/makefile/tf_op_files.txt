@@ -176,6 +176,11 @@ tensorflow/core/kernels/quantized_pooling_ops.cc
 tensorflow/core/kernels/quantized_reshape_op.cc
 tensorflow/core/kernels/requantization_range_op.cc
 tensorflow/core/kernels/requantize.cc
+tensorflow/core/kernels/resample_op.cc
+tensorflow/core/kernels/optical_flow_to_hsv_op.cc
+tensorflow/core/kernels/optical_flow_to_rgb_op.cc
+tensorflow/core/kernels/roi_pooling_op.cc
+tensorflow/core/kernels/roi_unpooling_op.cc
 tensorflow/core/ops/training_ops.cc
 tensorflow/core/ops/string_ops.cc
 tensorflow/core/ops/state_ops.cc
