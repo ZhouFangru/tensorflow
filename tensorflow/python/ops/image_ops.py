@@ -81,6 +81,9 @@ resized_image = tf.image.resize_images(image, [299, 299])
 @@crop_to_bounding_box
 @@extract_glimpse
 
+@@resample_and_pad
+@@resize_and_pad
+
 @@crop_and_resize
 
 ## Flipping, Rotating and Transposing

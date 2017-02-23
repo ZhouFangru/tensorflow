@@ -366,7 +366,31 @@ def resample_and_pad(image, offset_height, offset_width,
   if len(image.get_shape()) == 3:
     image = array_ops.expand_dims(image, 0)
   batch_size, _, _, depth = _ImageDimensions(image)
-  resized = resample(image, [height, width])
+  resized = gen_image_ops.resample(image, [height, width])
+  after_padding_width = target_width - offset_width - width
+  after_padding_height = target_height - offset_height - height
+  paddings = array_ops.reshape(
+    array_ops.pack([0, 0,
+                    offset_height, after_padding_height,
+                    offset_width, after_padding_width,
+                    0, 0]),
+    [4, 2])
+  padded = array_ops.pad(resized, paddings)
+  padded_shape = [None if _is_tensor(i) else i
+                  for i in [batch_size, target_height, target_width, depth]]
+  padded.set_shape(padded_shape)
+  return padded
+
+
+# Added by X
+def resize_and_pad(image, offset_height, offset_width,
+                    height, width,
+                    target_height, target_width):
+  # written by X, no back propagation through roi, but anyway
+  if len(image.get_shape()) == 3:
+    image = array_ops.expand_dims(image, 0)
+  batch_size, _, _, depth = _ImageDimensions(image)
+  resized = gen_image_ops.resize_bilinear(image, [height, width])
   after_padding_width = target_width - offset_width - width
   after_padding_height = target_height - offset_height - height
   paddings = array_ops.reshape(
